@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Registro y seguimiento de diagnósticos de laptops en Petulap.">
+    <title>Diagnósticos - Petulap</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm" aria-label="Navegación principal">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">Petulap</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Mostrar menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="diagnosticos.html" aria-current="page">Diagnósticos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="py-5">
+        <div class="container">
+            <h1 class="h2 fw-bold text-center mb-4">Registro de Falla para Diagnóstico</h1>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <!-- Vista 2: Formulario conectado a DiagnosticoService -->
+                    <section class="card shadow-sm p-4 border mb-4" aria-labelledby="tituloForm">
+                        <h2 id="tituloForm" class="h5 fw-bold mb-3">Nuevo diagnóstico</h2>
+                        <form id="formDiagnostico" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="inputCliente" class="form-label">Cliente</label>
+                                    <input type="text" id="inputCliente" class="form-control" placeholder="Nombre del cliente" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputEquipo" class="form-label">Equipo</label>
+                                    <input type="text" id="inputEquipo" class="form-control" placeholder="Ej. HP Pavilion 15" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="selectServicio" class="form-label">Servicio</label>
+                                    <select id="selectServicio" class="form-select" required>
+                                        <option value="">Elige un servicio...</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputFalla" class="form-label">Falla</label>
+                                    <input type="text" id="inputFalla" class="form-control" placeholder="Ej. se apaga por calor" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3 px-4">Registrar</button>
+                        </form>
+                        <div id="alertaForm" class="d-none" role="alert"></div>
+                    </section>
+
+                    <section class="card shadow-sm p-4 border" aria-labelledby="tituloLista">
+                        <h2 id="tituloLista" class="h5 fw-bold mb-3">Diagnósticos registrados</h2>
+                        <p id="mensajeVacio" class="text-muted mb-0">Aún no hay diagnósticos registrados.</p>
+                        <ul id="listaDiagnosticos" class="list-group"></ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-0">Derechos reservados para Kevin Quicaño Condori</p>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Capa de datos -->
+    <script src="js/repositorio/DiagnosticoRepository.js"></script>
+    <!-- Capa de servicio -->
+    <script src="js/servicios/CatalogoService.js"></script>
+    <script src="js/servicios/DiagnosticoService.js"></script>
+    <!-- Capa de presentación -->
+    <script src="js/vistas/diagnosticosVista.js"></script>
+</body>
+</html>

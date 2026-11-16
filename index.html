@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Petulap: soporte técnico, mantenimiento y repotenciación de laptops.">
     <title>Petulap - Servicio Técnico de Laptops</title>
     <!-- Bootstrap 5 CSS Local -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -11,87 +12,45 @@
 </head>
 <body>
     <!-- Header: Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Petulap</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#diagnostico">Diagnóstico</a></li>
-                </ul>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm" aria-label="Navegación principal">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">Petulap</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Mostrar menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page">Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="diagnosticos.html">Diagnósticos</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header id="inicio" class="hero-section text-center py-5 text-white">
-        <div class="container">
-            <h1 class="display-5 fw-bold mb-3">Soporte Técnico Especializado en Laptops</h1>
-            <p class="lead mb-0">Diagnóstico rápido, repotenciación y reparación profesional garantizada.</p>
-        </div>
+        </nav>
     </header>
 
-    <!-- Servicios -->
-    <section id="servicios" class="py-5">
-        <div class="container">
-            <h2 class="text-center fw-bold mb-4">Nuestros Servicios</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm text-center p-3">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Mantenimiento</h5>
-                            <p class="card-text text-muted">Limpieza interna profunda, cambio de pasta térmica y optimización del sistema de ventilación.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm text-center p-3">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Repotenciación SSD</h5>
-                            <p class="card-text text-muted">Aceleramos tu laptop instalando discos de estado sólido SSD y ampliaciones de memoria RAM.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm text-center p-3">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Cambio de Batería/Teclado</h5>
-                            <p class="card-text text-muted">Reemplazo de baterías agotadas, teclados con fallas mecánicas y componentes originales.</p>
-                        </div>
-                    </div>
-                </div>
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="hero-section text-center py-5 text-white">
+            <div class="container">
+                <h1 class="display-5 fw-bold mb-3">Soporte Técnico Especializado en Laptops</h1>
+                <p class="lead mb-0">Diagnóstico rápido, repotenciación y reparación profesional garantizada.</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Interacción: Diagnóstico y Registro -->
-    <section id="diagnostico" class="py-5 bg-white">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card shadow-sm p-4 border">
-                        <h3 class="fw-bold mb-3 text-center">Registro de Falla para Diagnóstico</h3>
-                        <form id="formDiagnostico" class="mb-4">
-                            <div class="input-group">
-                                <input type="text" id="inputFalla" class="form-control" placeholder="Escribe la falla de tu laptop (ej. HP se apaga por calor)" required>
-                                <button type="submit" class="btn btn-primary px-4">Registrar</button>
-                            </div>
-                        </form>
-                        <h5 class="fw-bold mb-3">Diagnósticos en espera:</h5>
-                        <ul id="listaDiagnosticos" class="list-group">
-                            <!-- Los diagnósticos registrados aparecerán aquí -->
-                        </ul>
-                    </div>
-                </div>
+        <!-- Vista 1: Catálogo de servicios (datos desde CatalogoService) -->
+        <section id="servicios" class="py-5">
+            <div class="container">
+                <h2 class="text-center fw-bold mb-4">Nuestros Servicios</h2>
+                <p id="mensajeServicios" class="text-center text-muted" role="status"></p>
+                <div id="listaServicios" class="row g-4"></div>
+                <p class="text-center mt-5">
+                    <a href="diagnosticos.html" class="btn btn-primary btn-lg">Registrar una falla</a>
+                </p>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Footer -->
     <footer class="bg-dark text-white text-center py-4 mt-5">
         <div class="container">
             <p class="mb-0">Derechos reservados para Kevin Quicaño Condori</p>
@@ -100,7 +59,9 @@
 
     <!-- Bootstrap 5 JS Local -->
     <script src="js/bootstrap.bundle.min.js"></script>
-    <!-- Lógica JS -->
-    <script src="js/main.js"></script>
+    <!-- Capa de servicio -->
+    <script src="js/servicios/CatalogoService.js"></script>
+    <!-- Capa de presentación -->
+    <script src="js/vistas/catalogoVista.js"></script>
 </body>
 </html>
