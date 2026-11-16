@@ -1,0 +1,8 @@
+[
+    { "id": 1, "nombre": "Mantenimiento", "precio": 60,
+      "descripcion": "Limpieza interna profunda, cambio de pasta térmica y optimización del sistema de ventilación." },
+    { "id": 2, "nombre": "Repotenciación SSD", "precio": 150,
+      "descripcion": "Aceleramos tu laptop instalando discos de estado sólido SSD y ampliaciones de memoria RAM." },
+    { "id": 3, "nombre": "Cambio de Batería/Teclado", "precio": 120,
+      "descripcion": "Reemplazo de baterías agotadas, teclados con fallas mecánicas y componentes originales." }
+]

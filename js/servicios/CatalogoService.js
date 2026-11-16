@@ -1,8 +1,9 @@
-// CAPA DE SERVICIO: Catálogo de servicios técnicos (servicio simulado).
-// Simula una API REST: devuelve Promesas con una pequeña espera, igual que una llamada real.
-// Si más adelante existe una API real, solo se cambia el interior de listar().
+// CAPA DE SERVICIO: Catálogo de servicios técnicos.
+// Consume el archivo data/servicios.json con Fetch API (solicitud HTTP GET).
+// Si el sitio se abre sin servidor (doble clic, file://), fetch no puede leer el archivo
+// y se usa una copia de respaldo para que la página siga funcionando.
 (function () {
-    const SERVICIOS = [
+    const RESPALDO = [
         { id: 1, nombre: 'Mantenimiento', precio: 60,
           descripcion: 'Limpieza interna profunda, cambio de pasta térmica y optimización del sistema de ventilación.' },
         { id: 2, nombre: 'Repotenciación SSD', precio: 150,
@@ -11,23 +12,25 @@
           descripcion: 'Reemplazo de baterías agotadas, teclados con fallas mecánicas y componentes originales.' }
     ];
 
-    function esperar(valor) {
-        return new Promise(function (resolver) {
-            setTimeout(function () { resolver(valor); }, 300);
-        });
-    }
-
     window.Petulap = window.Petulap || {};
 
     window.Petulap.CatalogoService = {
-        // GET /servicios
+        // GET data/servicios.json
         listar: function () {
-            return esperar(SERVICIOS.slice());
+            return fetch('data/servicios.json')
+                .then(function (respuesta) {
+                    if (!respuesta.ok) { throw new Error('Error HTTP ' + respuesta.status); }
+                    return respuesta.json();
+                })
+                .catch(function () {
+                    return RESPALDO.slice();
+                });
         },
-        // GET /servicios/:id
+        // Busca un servicio por id dentro del catálogo
         obtenerPorId: function (id) {
-            const encontrado = SERVICIOS.find(function (s) { return s.id === Number(id); });
-            return esperar(encontrado || null);
+            return this.listar().then(function (servicios) {
+                return servicios.find(function (s) { return s.id === Number(id); }) || null;
+            });
         }
     };
 })();
